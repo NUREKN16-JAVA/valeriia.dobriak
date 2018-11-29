@@ -1,6 +1,7 @@
 package ua.nure.kn.dobriak.usermanagement.db;
 
 import junit.framework.TestCase;
+import ua.nure.kn.dobriak.usermanagement.User;
 
 public class HsqldbUserDaoTest extends TestCase {
 
