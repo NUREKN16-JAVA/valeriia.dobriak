@@ -5,7 +5,8 @@ import ua.nure.kn.dobriak.usermanagement.User;
 
 public class HsqldbUserDaoTest extends TestCase {
 
-	HsqldbUserDao dao;
+	private HsqldbUserDao dao;
+	private ConnectionFactory connectionFactory;
 	
 	
 	
@@ -13,7 +14,8 @@ public class HsqldbUserDaoTest extends TestCase {
 	protected void setUp() throws Exception {
 		// TODO Auto-generated method stub
 		super.setUp();
-		dao = new HsqldbUserDao ();
+		connectionFactory = new ConnectionFactoryImpl();
+		dao = new HsqldbUserDao (connectionFactory);
 		
 	}
 

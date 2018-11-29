@@ -1,8 +1,22 @@
 package ua.nure.kn.dobriak.usermanagement.db;
 
-import ua.nure.kn.dobriak.usermanagement.User;
+import java.util.Collection;
+
+import ua.nure.kn.dobriak.usermanagement.User;;
+
 
 public class HsqldbUserDao implements UserDao {
+	
+	private ConnectionFactory connectionFactory;
+	
+	public HsqldbUserDao(ConnectionFactory connectionFactory) {
+		this.connectionFactory = connectionFactory;
+		
+		
+	}
+	
+	
+	
 
 	public HsqldbUserDao() {
 		// TODO Auto-generated constructor stub
