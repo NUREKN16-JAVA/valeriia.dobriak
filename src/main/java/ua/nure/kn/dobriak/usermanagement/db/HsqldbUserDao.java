@@ -1,5 +1,8 @@
 package ua.nure.kn.dobriak.usermanagement.db;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Collection;
 
 import ua.nure.kn.dobriak.usermanagement.User;;
@@ -23,9 +26,14 @@ public class HsqldbUserDao implements UserDao {
 	}
 
 	@Override
-	public User create(User user) throws DatabaseException {
-		// TODO Auto-generated method stub
-		return null;
+	public User create (User user) throws DatabaseException {
+		
+	
+			Connection connection = connectionFactory.createConnection();
+			PreparedStatement statement = connection.prepareStatement("INSERT INTO users (firstname, lastname,dateofbirth) VALUES (?, ?, ?)");
+			
+			return null;
+		
 	}
 
 	@Override
