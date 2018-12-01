@@ -23,6 +23,17 @@ public class ManageUsersTest extends TestCase {
         ManageUser.destroy(userId);
     }
 
+    public void testUpdate() {
+        User user = new User(FIRST_NAME, LAST_NAME, DATE_OF_BIRTH);
+        user.setId(ManageUser.create(user));
+        User updatedUser = new User(OTHER_FIRST_NAME, OTHER_LAST_NAME, OTHER_DATE_OF_BIRTH);
+        ManageUser.update(user.getId(), updatedUser);
+        updatedUser = ManageUser.find(user.getId());
+        assertNotSame(user.getFullName(), updatedUser.getFullName());
+        assertNotSame(user.getAge(), updatedUser.getAge());
+        ManageUser.destroy(user.getId());
+    }
+
     public void testFind() {
         User user = new User(FIRST_NAME, LAST_NAME, DATE_OF_BIRTH);
         user.setId(ManageUser.create(user));

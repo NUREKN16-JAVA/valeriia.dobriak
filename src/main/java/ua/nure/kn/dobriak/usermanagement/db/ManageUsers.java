@@ -27,6 +27,25 @@ public class ManageUsers {
         return userID;
     }
 
+    public static void update(Integer userId, User editedUser){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            User user = session.get(User.class, userId);
+            user.clone(editedUser);
+            session.update(user);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+    }
+
     public static User find(Integer userId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
