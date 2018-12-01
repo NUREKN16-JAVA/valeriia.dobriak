@@ -16,4 +16,12 @@ public class ManageUsersTest extends TestCase {
         Integer userId = ManageUser.create(user);
         assertNotNull(userId);
     }
+
+    public void testDestroy() {
+        Integer userId = ManageUser.create(new User(FIRST_NAME, LAST_NAME, DATE_OF_BIRTH));
+        Long countBefore = ManageUser.countAll();
+        ManageUser.destroy(userId);
+        Long countAfter = ManageUser.countAll();
+        assertTrue(countBefore.intValue() != countAfter.intValue());
+    }
 }
