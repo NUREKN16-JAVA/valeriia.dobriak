@@ -23,6 +23,14 @@ public class ManageUsersTest extends TestCase {
         ManageUser.destroy(userId);
     }
 
+    public void testFind() {
+        User user = new User(FIRST_NAME, LAST_NAME, DATE_OF_BIRTH);
+        user.setId(ManageUser.create(user));
+        User testedUser = ManageUser.find(user.getId());
+        assertEquals(user.getId(), testedUser.getId());
+        ManageUser.destroy(user.getId());
+    }
+
     public void testFindAll() {
         Integer firstUserId = ManageUser.create(new User(FIRST_NAME, LAST_NAME, DATE_OF_BIRTH));
         Integer secondUserId = ManageUser.create(new User(OTHER_FIRST_NAME, OTHER_LAST_NAME, OTHER_DATE_OF_BIRTH));

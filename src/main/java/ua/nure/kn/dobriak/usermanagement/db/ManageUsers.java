@@ -27,6 +27,23 @@ public class ManageUsers {
         return userID;
     }
 
+    public static User find(Integer userId) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        User user = null;
+        try {
+            tx = session.beginTransaction();
+            user = session.get(User.class, userId);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return user;
+    }
+
     public static List findAll(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
