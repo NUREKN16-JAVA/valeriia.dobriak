@@ -1,14 +1,15 @@
 package ua.nure.kn.dobriak.usermanagement;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Before;
+import org.junit.Test;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
+
+import static org.junit.Assert.*;
 
 class UserTest {
 
-	@BeforeEach
+	@Before
 	void setUp() throws Exception {
 	}
 	
