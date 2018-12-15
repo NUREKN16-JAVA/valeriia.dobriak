@@ -1,9 +1,14 @@
 package ua.nure.kn.dobriak.usermanagement.gui;
 
+import ua.nure.kn.dobriak.usermanagement.User;
+import ua.nure.kn.dobriak.usermanagement.db.ManageUsers;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class AddPanel extends JPanel implements ActionListener {
     private final MainFrame parent;
@@ -103,8 +108,28 @@ public class AddPanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-
+    public void actionPerformed(ActionEvent e) {
+        if ("submit".equalsIgnoreCase(e.getActionCommand())) {
+            User user = new User();
+            user.setFirstName(getFirstNameField().getText());
+            user.setLastName(getLastNameField().getText());
+            LocalDate date;
+            try {
+                date = LocalDate.parse(getDateOfBirthField().getText());
+            } catch (DateTimeParseException el) {
+                getDateOfBirthField().setBackground(Color.RED);
+                return;
+            }
+            user.setDateOfBirth(date);
+            Integer userId = ManageUsers.create(user);
+            if (userId == null) {
+                JOptionPane.showMessageDialog(this, "User was not created", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        clearFields();
+        this.setVisible(false);
+        parent.showBrowsePanel();
     }
 
     private void clearFields() {

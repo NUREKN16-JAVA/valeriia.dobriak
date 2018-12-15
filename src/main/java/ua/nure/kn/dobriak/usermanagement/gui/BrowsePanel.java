@@ -1,5 +1,7 @@
 package ua.nure.kn.dobriak.usermanagement.gui;
 
+import ua.nure.kn.dobriak.usermanagement.db.ManageUsers;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -100,7 +102,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 
 
     public void initTable() {
-        UserTableModel model = new UserTableModel(parent.ManageUser.findAll());
+        UserTableModel model = new UserTableModel(ManageUsers.findAll());
         getUserTable().setModel(model);
     }
 

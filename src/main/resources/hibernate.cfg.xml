@@ -22,7 +22,7 @@
         </property>
 
         <property name = "hibernate.connection.password">
-            root
+            qwerty
         </property>
         <mapping class="ua.nure.kn.dobriak.usermanagement.User"/>
         <!-- List of XML mapping files -->

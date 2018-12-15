@@ -1,6 +1,6 @@
 package ua.nure.kn.dobriak.usermanagement.gui;
 
-import ua.nure.kn.kuchinskiy.usermanagement.User;
+import ua.nure.kn.dobriak.usermanagement.User;
 
 import javax.swing.table.AbstractTableModel;
 import java.time.LocalDate;

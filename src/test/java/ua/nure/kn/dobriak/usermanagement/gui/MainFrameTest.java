@@ -51,7 +51,7 @@ public class MainFrameTest extends JFCTestCase {
     public void testAddUser() {
         JTable table = (JTable) find(JTable.class, "userTable");
         assertEquals(0, table.getRowCount());
-        
+
         JButton addButton = (JButton) find(JButton.class, "addButton");
         getHelper().enterClickAndLeave(new MouseEventData(this, addButton));
 
