@@ -34,7 +34,6 @@ public class MainFrame extends JFrame {
         if (browsePanel == null) {
             browsePanel = new BrowsePanel(this);
         }
-        ((BrowsePanel) browsePanel).initTable();
         return browsePanel;
     }
 
