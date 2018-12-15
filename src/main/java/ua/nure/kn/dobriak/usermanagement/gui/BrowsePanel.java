@@ -98,6 +98,12 @@ public class BrowsePanel extends JPanel implements ActionListener {
         return deleteButton;
     }
 
+
+    public void initTable() {
+        UserTableModel model = new UserTableModel(parent.ManageUser.findAll());
+        getUserTable().setModel(model);
+    }
+
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String actionCommand = actionEvent.getActionCommand();
