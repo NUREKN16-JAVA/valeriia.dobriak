@@ -2,4 +2,6 @@
 .idea
 .settings
 .project
+usermanagement.iml
+.classpath
 
