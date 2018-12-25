@@ -1,4 +1,4 @@
-package ua.nure.kn.kuchinskiy.usermanagement.web;
+package ua.nure.kn.dobriak.usermanagement.web;
 
 import ua.nure.kn.dobriak.usermanagement.User;
 import ua.nure.kn.dobriak.usermanagement.db.DatabaseException;
@@ -15,7 +15,7 @@ public class BrowseServletTest extends MockServletTestCase {
     }
 
     public void testBrowse() {
-        User user = new User("Vladimir", "Kuchinskiy", LocalDate.of(1999, 9, 23));
+        User user = new User("Valeria", "Dobriak", LocalDate.of(1999, 9, 23));
         List list = Collections.singletonList(user);
         try {
             list = getUserManager().findAll();
@@ -29,7 +29,7 @@ public class BrowseServletTest extends MockServletTestCase {
     }
 
     public void testEdit() {
-        User user = new User("Vladimir", "Kuchinskiy", LocalDate.of(1999, 9, 23));
+        User user = new User("Valeria", "Dobriak", LocalDate.of(1999, 9, 23));
         Integer userId = getUserManager().create(user);
         addRequestParameter("editButton", "Edit");
         addRequestParameter("id", userId.toString());

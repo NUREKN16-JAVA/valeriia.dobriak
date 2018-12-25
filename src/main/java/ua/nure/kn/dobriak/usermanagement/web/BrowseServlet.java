@@ -1,8 +1,7 @@
-package ua.nure.kn.kuchinskiy.usermanagement.web;
+package ua.nure.kn.dobriak.usermanagement.web;
 
 import ua.nure.kn.dobriak.usermanagement.User;
 import ua.nure.kn.dobriak.usermanagement.db.DatabaseException;
-import ua.nure.kn.dobriak.usermanagement.db.ManageUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +37,7 @@ public class BrowseServlet extends HttpServlet {
             return;
         }
         try {
-            ManageUser manageUser = new ManageUser();
+            ManageUsers manageUser = new ManageUser();
             User user = manageUser.find(new Integer(idStr));
             req.getSession().setAttribute("user", user);
         } catch (Exception e) {
@@ -57,7 +56,7 @@ public class BrowseServlet extends HttpServlet {
     private void browse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Collection users;
         try {
-            ManageUser manageUser = new ManageUser();
+            ManageUsers manageUser = new ManageUser();
             users = manageUser.findAll();
             req.getSession().setAttribute("users", users);
             req.getRequestDispatcher("/browse.jsp").forward(req, resp);

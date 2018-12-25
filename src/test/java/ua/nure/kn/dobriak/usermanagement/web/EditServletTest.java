@@ -14,12 +14,12 @@ public class EditServletTest extends MockServletTestCase {
 
     public void testEdit() {
         LocalDate date = LocalDate.of(1999, 9, 23);
-        User user = new User("Vladimir", "Kuchinskiy", date);
+        User user = new User("Valeria", "Dobriak", date);
         userId = Math.toIntExact(getUserManager().create(user));
 
         addRequestParameter("id", userId.toString());
-        addRequestParameter("firstName", "Vladimir");
-        addRequestParameter("lastName", "Kuchinskiy");
+        addRequestParameter("firstName", "Valeria");
+        addRequestParameter("lastName", "Dobriak");
         addRequestParameter("dateOfBirth", date.toString());
         addRequestParameter("okButton", "Ok");
         doPost();
@@ -27,7 +27,7 @@ public class EditServletTest extends MockServletTestCase {
 
     public void testEditEmptyFirstName() {
         addRequestParameter("id", userId.toString());
-        addRequestParameter("lastName", "Kuchinskiy");
+        addRequestParameter("lastName", "Dobriak");
         addRequestParameter("dateOfBirth", LocalDate.of(1999, 9, 23).toString());
         addRequestParameter("okButton", "Ok");
         doPost();
@@ -37,7 +37,7 @@ public class EditServletTest extends MockServletTestCase {
 
     public void testEditEmptyLastName() {
         addRequestParameter("id", userId.toString());
-        addRequestParameter("firstName", "Vladimir");
+        addRequestParameter("firstName", "Valeria");
         addRequestParameter("dateOfBirth", LocalDate.of(1999, 9, 23).toString());
         addRequestParameter("okButton", "Ok");
         doPost();
@@ -47,8 +47,8 @@ public class EditServletTest extends MockServletTestCase {
 
     public void testEditEmptyDateOfBirth() {
         addRequestParameter("id", userId.toString());
-        addRequestParameter("firstName", "Vladimir");
-        addRequestParameter("lastName", "Kuchinskiy");
+        addRequestParameter("firstName", "Valeria");
+        addRequestParameter("lastName", "Dobriak");
         addRequestParameter("okButton", "Ok");
         doPost();
         String errorMessage = (String) getWebMockObjectFactory().getMockSession().getAttribute("error");
@@ -57,8 +57,8 @@ public class EditServletTest extends MockServletTestCase {
 
     public void testEditEmptyDateOfBirthIncorrect() {
         addRequestParameter("id", userId.toString());
-        addRequestParameter("firstName", "Vladimir");
-        addRequestParameter("lastName", "Kuchinskiy");
+        addRequestParameter("firstName", "Valeria");
+        addRequestParameter("lastName", "Dobriak");
         addRequestParameter("dateOfBirth", "sadasdghghf");
         addRequestParameter("okButton", "Ok");
         doPost();
