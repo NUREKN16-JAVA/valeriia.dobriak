@@ -8,7 +8,7 @@ import ua.nure.kn.dobriak.usermanagement.User;
 import java.util.List;
 
 public class ManageUsers {
-    public static Integer create(User newUser){
+    public static Long create(User newUser){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         Integer userID = null;
