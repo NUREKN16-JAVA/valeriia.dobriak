@@ -1,10 +1,13 @@
 package ua.nure.kn.dobriak.usermanagement.db;
 
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ua.nure.kn.dobriak.usermanagement.User;
 
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ManageUsers {
@@ -61,6 +64,24 @@ public class ManageUsers {
             session.close();
         }
         return user;
+    }
+
+    public Collection<User> find(String firstName, String lastName) throws DatabaseException {
+        Transaction tx = null;
+        Collection<User> users = new LinkedList<>();
+        try {
+            tx = session.beginTransaction();
+            SQLQuery query = session.createSQLQuery("SELECT id, first_name, last_name, birthday FROM TEST.USERS WHERE first_name = :firstName AND last_name = :lastName");
+            query.setParameter("firstName", firstName);
+            query.setParameter("lastName", lastName);
+            users = query.list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        }
+
+        return users;
     }
 
     public static List findAll(){
